@@ -5,6 +5,9 @@ from datetime import datetime
 import numpy as np
 import streamlit.components.v1 as components
 import html
+import request 
+from streamlit_autorefresh import st_autorefresh
+st_autorefresh(interval=10 * 1000, key="refresh_convo")  # refresh every 10 sec
 
 # --- Function to load and inject custom CSS ---
 def load_custom_css():
@@ -225,7 +228,28 @@ else:
 st.markdown("<br>", unsafe_allow_html=True)
 
 # --- Load Data ---
-df_convo = load_data(CONVO_FILE, data_type='convos')
+#df_convo = load_data(CONVO_FILE, data_type='convos')
+def load_convos_from_api():
+    base_url = os.getenv("FLASK_BASE_URL")
+    if not base_url:
+        st.warning("⚠️ Flask API URL not set. Showing local CSV data instead.")
+        return load_data(CONVO_FILE, data_type='convos')
+
+    try:
+        res = requests.get(f"{base_url}/messages", timeout=10)
+        res.raise_for_status()
+        data = res.json()
+        if not data:
+            st.info("No live data yet, showing last saved data.")
+            return load_data(CONVO_FILE, data_type='convos')
+        df = pd.DataFrame(data)
+        return df
+    except Exception as e:
+        st.error(f"Error fetching live data: {e}")
+        return load_data(CONVO_FILE, data_type='convos')
+
+df_convo = load_convos_from_api()
+
 df_orders = load_data(ORDERS_FILE, data_type='orders')
 
 # --- Statistics Cards ---
@@ -524,4 +548,5 @@ st.markdown(f"""
     Last updated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')} | 
     Status: <span style='color: #28a745;'>● Online</span>
 </div>
+
 """, unsafe_allow_html=True)

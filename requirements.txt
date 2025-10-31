@@ -1,9 +1,5 @@
-flask
-twilio
-openai
-python-dotenv
 streamlit
 pandas
 numpy
-request 
-gunicorn
+requests
+streamlit-autorefresh

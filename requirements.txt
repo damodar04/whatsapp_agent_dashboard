@@ -5,4 +5,5 @@ python-dotenv
 streamlit
 pandas
 numpy
+request 
 gunicorn

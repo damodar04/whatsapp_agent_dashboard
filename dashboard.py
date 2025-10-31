@@ -202,7 +202,7 @@ if 'current_view' not in st.session_state:
     st.session_state.current_view = 'home'
 
 # --- Header ---
-image_path = "images/Auagentphoto.png"
+image_path = "Auagentphoto.png"
 if os.path.exists(image_path):
     col1, col2 = st.columns([1, 9])
     with col1:
@@ -525,3 +525,4 @@ st.markdown(f"""
     Status: <span style='color: #28a745;'>● Online</span>
 </div>
 """, unsafe_allow_html=True)
+

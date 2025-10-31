@@ -5,7 +5,7 @@ from datetime import datetime
 import numpy as np
 import streamlit.components.v1 as components
 import html
-import request 
+import requests
 from streamlit_autorefresh import st_autorefresh
 st_autorefresh(interval=10 * 1000, key="refresh_convo")  # refresh every 10 sec
 
@@ -550,3 +550,4 @@ st.markdown(f"""
 </div>
 
 """, unsafe_allow_html=True)
+

@@ -74,7 +74,7 @@ The Streamlit dashboard provides three main views:
 
 1.  **Clone the repository**
     ```bash
-    git clone [https://github.com/yourusername/whatsapp-agent.git](https://github.com/yourusername/whatsapp-agent.git)
+    git clone [https://github.com/damodar04/whatsapp-agent.git](https://github.com/damodar04/whatsapp-agent.git)
     cd whatsapp-agent
     ```
 
@@ -118,4 +118,4 @@ The Streamlit dashboard provides three main views:
 **Damodar Bhawsar**
 
 * 📧 Email: [damodar.pr04@gmail.com](mailto:damodar.pr04@gmail.com)
-* 🔗 LinkedIn: [linkedin.com/in/damodar-bhawsar](https://www.linkedin.com/in/damodar-bhawsar)
+* 🔗 LinkedIn: [linkedin.com/in/damodar-bhawsar](https://www.linkedin.com/in/damodar-bhawsar-)

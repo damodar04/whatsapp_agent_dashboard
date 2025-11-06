@@ -1,119 +1,121 @@
-🤖 WhatsApp Agent – AI-Powered Communication System
-🎯 Overview
+# 🤖 WhatsApp Agent – AI-Powered Communication System
 
-The WhatsApp Agent is an AI-driven communication and automation system designed to handle customer queries, process product orders, and maintain real-time interaction logs — all through WhatsApp.
+A comprehensive AI-driven communication and automation system designed to handle customer queries, process product orders, and maintain real-time interaction logs directly through WhatsApp. This project integrates a **Flask** backend with **Twilio APIs** and features a **Streamlit Dashboard** for live monitoring and analytics.
 
-It integrates a Flask backend (connected with Twilio APIs) and a Streamlit Dashboard for live monitoring, analytics, and order management.
+> 🔴 **Live Demo Sites:**
+> * [API Endpoint (Flask)](https://whatsapp-agent-api.onrender.com)
+> * [Admin Dashboard (Streamlit)](https://whatsapp-agent-dashboard.onrender.com)
 
-✨ Key Highlights
+---
 
-✅ Real-time WhatsApp Automation
-✅ Handles User Queries & Product Orders
-✅ Secure Connection via Twilio Webhook
-✅ Live Conversation Dashboard (Streamlit)
-✅ Interactive Analytics & Order Tracking
-✅ Fully Deployed on Render
+## 🎯 Overview
 
-🏗️ Architecture
+This system acts as an intelligent intermediary between your business and customers on WhatsApp. It autonomously handles conversations while providing administrators with a complete view of operations through a dedicated dashboard.
 
-The project is divided into two core services:
+### Key Highlights
 
-1️⃣ Flask Backend (app.py)
+✅ **Real-time Automation**: Instant AI responses on WhatsApp
+✅ **Dual Capability**: Handles both general user queries & product orders
+✅ **Secure Infrastructure**: Verified connection via Twilio Webhooks
+✅ **Live Dashboard**: Built with Streamlit for real-time monitoring
+✅ **Interactive Analytics**: Visual insights into user traffic and orders
+✅ **Cloud Native**: Fully deployed and running on Render
 
-Manages communication between WhatsApp (via Twilio API) and the AI agent
+---
 
-Receives incoming messages through a webhook
+## 🏗️ Architecture
 
-Processes messages and sends AI-based responses
+The project is divided into two core services working in tandem:
 
-Stores chat and order data into CSV or database
+### 1️⃣ Flask Backend (`app.py`)
+The communication hub of the system.
+* Manages the webhook connection with WhatsApp (via Twilio API).
+* Processes incoming messages and generates AI-driven responses.
+* Logs chat history and order data to the database/CSV.
 
-2️⃣ Streamlit Dashboard (dashboard.py)
+### 2️⃣ Streamlit Dashboard (`dashboard.py`)
+The administrative control center.
+* **Real-time Feed**: Displays active conversations as they happen.
+* **Order History**: Tracks completed and in-progress transactions.
+* **Analytics Engine**: Visualizes active users, total message volume, and bot performance.
 
-Displays real-time conversations and order history
+---
 
-Shows statistics like active users, total messages, completed orders, and bot responses
+## 💬 How It Works
 
-Provides analytics with charts and recent activity logs
+1.  **User Interaction**: Customer sends a message to the Twilio WhatsApp sandbox number.
+2.  **Webhook Trigger**: Twilio forwards the message to the Flask backend.
+3.  **AI Processing**: The agent interprets the intent and generates a relevant response.
+4.  **Data Logging**: Interaction details and orders are saved for analysis.
+5.  **Live Monitoring**: The Streamlit dashboard instantly reflects the new interaction.
 
-Allows admins to visualize user-agent interactions in a WhatsApp-style UI
+---
 
-🌐 Deployment
+## 📊 Dashboard Features
 
-Both services are deployed on Render:
+The Streamlit dashboard provides three main views:
 
-Flask API: https://whatsapp-agent-api.onrender.com
+| Section | Description |
+| :--- | :--- |
+| **💬 Live Conversations** | WhatsApp-style UI for viewing real-time user-agent chats |
+| **🛒 Order History** | Detailed logs of all completed and pending product orders |
+| **📈 Analytics** | Charts showing user activity, message distribution, and trends |
 
-Streamlit Dashboard: https://whatsapp-agent-dashboard.onrender.com
+---
 
-⚙️ Setup & Installation
+## ⚙️ Setup & Installation
 
-Prerequisites:
+### Prerequisites
+* Python 3.9+
+* Twilio Account (for WhatsApp Sandbox API)
+* Render Account (optional, for deployment)
 
-Python 3.9+
+### Installation Steps
 
-Twilio Account (for WhatsApp Sandbox)
+1.  **Clone the repository**
+    ```bash
+    git clone [https://github.com/yourusername/whatsapp-agent.git](https://github.com/yourusername/whatsapp-agent.git)
+    cd whatsapp-agent
+    ```
 
-Render Account (for deployment)
+2.  **Install dependencies**
+    ```bash
+    pip install -r requirements.txt
+    ```
 
-1️⃣ Clone the Repository:
+3.  **Environment Setup**
+    Create a `.env` file in the root directory and add your credentials:
+    ```env
+    TWILIO_ACCOUNT_SID=your_account_sid
+    TWILIO_AUTH_TOKEN=your_auth_token
+    TWILIO_PHONE_NUMBER=your_twilio_number
+    OPENAI_API_KEY=your_api_key
+    ```
 
-git clone https://github.com/yourusername/whatsapp-agent.git
-cd whatsapp-agent
+4.  **Run the Application**
+    * *Terminal 1 - Start Backend:*
+        ```bash
+        python app.py
+        ```
+    * *Terminal 2 - Start Dashboard:*
+        ```bash
+        streamlit run dashboard.py
+        ```
 
+---
 
-2️⃣ Install Dependencies:
+## 🧠 Future Enhancements
 
-pip install -r requirements.txt
+* [ ] Connect with a verified Business WhatsApp Number (non-sandbox).
+* [ ] Migrate data storage to a real-time database (MongoDB / PostgreSQL).
+* [ ] Implement AI-driven personalized product recommendations.
+* [ ] Integrate support for voice notes and image-based interactions.
 
+---
 
-3️⃣ Environment Setup (.env):
-Create a .env file and add your credentials (this file should not be pushed to GitHub):
+## 👤 Author
 
-TWILIO_ACCOUNT_SID=your_account_sid
-TWILIO_AUTH_TOKEN=your_auth_token
-TWILIO_PHONE_NUMBER=your_twilio_number
-OPENAI_API_KEY=your_api_key
+**Damodar Bhawsar**
 
-
-4️⃣ Run the Flask Server:
-
-python app.py
-
-
-5️⃣ Run the Dashboard:
-
-streamlit run dashboard.py
-
-💬 How It Works
-
-1️⃣ User sends a message to the Twilio WhatsApp sandbox number.
-2️⃣ Flask app receives the message via webhook and processes it.
-3️⃣ The AI agent generates a response and sends it back through Twilio.
-4️⃣ Chat data and order info are stored for analytics.
-5️⃣ The Streamlit dashboard shows all these interactions in real time.
-
-📊 Dashboard Sections
-
-💬 Live Conversations: Real-time WhatsApp-style chats
-
-🛒 Order History: Displays completed or in-progress orders
-
-📈 Analytics: Insights on user activity, message distribution, and payment trends
-
-🧠 Future Enhancements
-
-Connect with company’s verified WhatsApp number
-
-Migrate to a real-time database (MongoDB / PostgreSQL)
-
-Add AI-driven product recommendations
-
-Integrate voice & image-based customer interactions
-
-👤 Author
-
-Damodar Bhawsar
-📧 Email: damodar.pr04@gmail.com
-
-🔗 LinkedIn: linkedin.com/in/damodar-bhawsar
+* 📧 Email: [damodar.pr04@gmail.com](mailto:damodar.pr04@gmail.com)
+* 🔗 LinkedIn: [linkedin.com/in/damodar-bhawsar](https://www.linkedin.com/in/damodar-bhawsar)
